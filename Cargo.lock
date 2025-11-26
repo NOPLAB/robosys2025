@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "serial"
+name = "b64"
 version = "0.1.0"
