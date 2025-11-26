@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        run: cargo build --release
+
+      - name: Test empty input
+        run: |
+          result=$(printf '' | ./target/release/b64)
+          expected=""
+          [ "$result" = "$expected" ]
+
+      - name: Test single character
+        run: |
+          result=$(printf 'a' | ./target/release/b64)
+          expected=$(printf 'a' | base64)
+          [ "$result" = "$expected" ]
+
+      - name: Test two characters
+        run: |
+          result=$(printf 'ab' | ./target/release/b64)
+          expected=$(printf 'ab' | base64)
+          [ "$result" = "$expected" ]
+
+      - name: Test three characters
+        run: |
+          result=$(printf 'abc' | ./target/release/b64)
+          expected=$(printf 'abc' | base64)
+          [ "$result" = "$expected" ]
+
+      - name: Test Hello World
+        run: |
+          result=$(printf 'Hello, World!' | ./target/release/b64)
+          expected=$(printf 'Hello, World!' | base64)
+          [ "$result" = "$expected" ]
+
+      - name: Test binary data
+        run: |
+          result=$(printf '\x00\x01\x02\xff' | ./target/release/b64)
+          expected=$(printf '\x00\x01\x02\xff' | base64)
+          [ "$result" = "$expected" ]
+
+      - name: Test longer text
+        run: |
+          result=$(printf 'The quick brown fox jumps over the lazy dog' | ./target/release/b64)
+          expected=$(printf 'The quick brown fox jumps over the lazy dog' | base64)
+          [ "$result" = "$expected" ]
