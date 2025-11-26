@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025 nop
+// SPDX-License-Identifier: MIT
+
 use std::io::{self, Read, Write};
 
 const BASE64_TABLE: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
