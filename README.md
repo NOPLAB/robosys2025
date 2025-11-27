@@ -1,5 +1,7 @@
 # b64
 
+[![Test](https://github.com/NOPLAB/robosys2025/actions/workflows/test.yml/badge.svg)](https://github.com/NOPLAB/robosys2025/actions/workflows/test.yml)
+
 標準入力から受け取ったデータをBase64エンコードして標準出力に出力するCLIツールです。
 
 ## 概要
