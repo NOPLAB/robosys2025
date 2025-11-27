@@ -25,6 +25,11 @@ cat image.png | b64 > image_base64.txt
 cargo build --release
 ```
 
+## 必要なソフトウェア
+
+- Rust 1.91.1以上
+- Cargo（Rustに付属）
+
 ## テスト環境
 
 - Rust 1.91.1
