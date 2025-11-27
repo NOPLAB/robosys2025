@@ -25,6 +25,10 @@ cat image.png | b64 > image_base64.txt
 cargo build --release
 ```
 
+## テスト環境
+
+- Rust 1.91.1
+
 ## ライセンスおよびコピーライト
 
 - © 2025 nop
